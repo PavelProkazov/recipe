@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Recipes_App</string>
+    <string name="app_name">Recipes</string>
+    <string name="logo">Рецепты</string>
+    <string name="input_product">Введите название продукта</string>
+    <string name="add_button">Добавить продукт</string>
+    <string name="empty"></string>
+    <string name="wait">Ждем..</string>
+    <string name="no_text_input">Введите название продукта</string>
 </resources>
