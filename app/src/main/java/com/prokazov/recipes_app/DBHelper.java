@@ -33,10 +33,10 @@ class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
 
-        db.execSQL("CREATE TABLE" +RECIPES_TABLE+ "(" +KEY_ID+ "integer primary key,"
+        db.execSQL("CREATE TABLE " +RECIPES_TABLE+ "(" +KEY_ID+ "integer primary key,"
                 + KEY_RECIPE+"text," + KEY_PRODUCT+"text"+")");
 
-        db.execSQL("CREATE TABLE" +PRODUCTS_TABLE+ "(" +KEY_ID_PRODUCT+ "integer primary key,"
+        db.execSQL("CREATE TABLE " +PRODUCTS_TABLE+ "(" +KEY_ID_PRODUCT+ "integer primary key,"
                 + KEY_PRODUCT_NAME+"text"+")");
 
 
@@ -45,8 +45,8 @@ class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        db.execSQL("drop table if exists"+RECIPES_TABLE);
-        db.execSQL("drop table if exists"+PRODUCTS_TABLE);
+        db.execSQL("drop table if exists "+RECIPES_TABLE);
+        db.execSQL("drop table if exists "+PRODUCTS_TABLE);
 
 
     }

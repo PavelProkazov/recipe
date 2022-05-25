@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/logo"
         android:layout_width="match_parent"
-        android:layout_height="51dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="35sp"
         android:layout_marginBottom="15sp"
         android:fontFamily="sans-serif"
@@ -31,19 +31,20 @@
         android:backgroundTint="@color/input_tint"
         android:ems="10"
         android:hint="@string/input_product"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
-        android:textColorHint="@color/textColorHint"
-        android:importantForAutofill="no" />
+        android:textColor="@color/textColor"
+        android:textColorHint="@color/textColorHint" />
 
     <Button
         android:id="@+id/add_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/input_product"
+        android:layout_alignLeft="@+id/input_product"
+        android:layout_toLeftOf="@+id/clear_button"
         android:background="@color/input_tint"
-        android:text="@string/add_button"
-
-        />
+        android:text="@string/add_button" />
 
     <TextView
         android:id="@+id/product_list"
@@ -51,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/add_button"
         android:text="@string/empty"
-        android:textColor="@color/textColor"/>
+        android:textColor="@color/textColor" />
 
     <TextView
         android:id="@+id/recipes"
@@ -59,5 +60,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/product_list"
         android:text="@string/empty"
-        android:textColor="@color/textColor"/>
+        android:textColor="@color/textColor" />
+
+    <Button
+        android:id="@+id/clear_button"
+        android:layout_width="137dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/input_product"
+        android:background="@color/input_tint"
+        android:layout_marginLeft="15sp"
+        android:text="@string/clear"
+        android:layout_alignRight="@+id/input_product"/>
+
 </RelativeLayout>
