@@ -1,6 +1,9 @@
 apply plugin: 'com.android.application'
 
+apply plugin: 'com.google.gms.google-services'
+
 android {
+    //noinspection GradleCompatible
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.prokazov.recipes_app"
@@ -16,13 +19,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility sourceCompatibility
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    namespace 'com.prokazov.recipes_app'
+    buildToolsVersion '28.0.3'
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha04'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test:runner:1.5.0-alpha03'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0-alpha06'
+
+    implementation platform('com.google.firebase:firebase-bom:30.0.2')
+    implementation 'com.google.firebase:firebase-analytics'
 }

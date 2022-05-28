@@ -1,7 +1,10 @@
 package com.prokazov.recipes_app;
 
 
-class Recipe {
+import java.util.HashMap;
+import java.util.Map;
+
+public class Food_Recipes {
 
 
 
