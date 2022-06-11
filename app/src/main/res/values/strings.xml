@@ -4,8 +4,9 @@
     <string name="input_product">Введите название продукта</string>
     <string name="add_button">Добавить продукт</string>
     <string name="empty"></string>
+    <string name="max_of_product">Очистите список продуктов и попробуйте еще раз, используйте 8 ингредиентов и меньше</string>
     <string name="wait">Ждем..</string>
     <string name="no_text_input">Введите название продукта</string>
-    <string name="no_data">No Data</string>
+    <string name="no_data">Ни чего не найдено!</string>
     <string name="clear">Очистить</string>
 </resources>

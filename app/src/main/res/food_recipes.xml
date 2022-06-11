@@ -1,5 +1,9 @@
 <Recipes>
-    <Full_recipe ID="1">
+    <recipe products="www xml" frecipe="xmltesetetsetestsetsetseset"/>
+
+
+
+    <Full_recipe ID="R1">
         <products>
             Ингредиенты:
             - Овсяные хлопья — 200 г
@@ -35,7 +39,7 @@
 
         </recipe>
     </Full_recipe>
-    <Full_recipe ID="2">
+    <Full_recipe ID="R2">
         <products>
             Ингредиенты:
             - молоко — 200 г

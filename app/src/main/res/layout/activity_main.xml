@@ -2,39 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+
+
     tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/logo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35sp"
-        android:layout_marginBottom="15sp"
-        android:fontFamily="sans-serif"
-        android:text="@string/logo"
-        android:textAlignment="center"
-        android:textColor="@color/textColor"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
-
-    <EditText
-        android:id="@+id/input_product"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/logo"
-        android:layout_marginHorizontal="25sp"
-        android:layout_marginBottom="15sp"
-        android:backgroundTint="@color/input_tint"
-        android:ems="10"
-        android:hint="@string/input_product"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:textColor="@color/textColor"
-        android:textColorHint="@color/textColorHint" />
 
     <Button
         android:id="@+id/add_button"
@@ -46,37 +19,70 @@
         android:background="@color/input_tint"
         android:text="@string/add_button" />
 
-    <TextView
-        android:id="@+id/product_list"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/clear_button"
+        android:layout_width="137dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/add_button"
-        android:text="@string/empty"
-        android:textColor="@color/textColor" />
+        android:layout_below="@+id/input_product"
+        android:layout_alignRight="@+id/input_product"
+        android:layout_marginLeft="15sp"
+        android:background="@color/clr_btn"
+        android:text="@string/clear" />
+
+    <EditText
+        android:id="@+id/input_product"
+        android:layout_width="match_parent"
+        android:layout_height="55sp"
+        android:layout_below="@+id/logo"
+        android:layout_marginHorizontal="25sp"
+        android:layout_marginBottom="15sp"
+        android:backgroundTint="@color/input_tint"
+        android:ems="10"
+
+        android:hint="@string/input_product"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textColor="@color/textColorLightTheme"
+        android:textColorHint="@color/textColorHintLight" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/product_list"
-        android:layout_alignParentRight="true">
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="0dp">
 
         <TextView
             android:id="@+id/recipes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/empty"
-            android:textColor="@color/textColor" />
+            android:textColor="@color/textColorLightTheme" />
     </ScrollView>
 
-
-    <Button
-        android:id="@+id/clear_button"
-        android:layout_width="137dp"
+    <TextView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/input_product"
-        android:background="@color/input_tint"
-        android:layout_marginLeft="15sp"
-        android:text="@string/clear"
-        android:layout_alignRight="@+id/input_product"/>
+        android:layout_marginTop="35sp"
+        android:layout_marginBottom="15sp"
+        android:fontFamily="sans-serif"
+        android:text="@string/logo"
+        android:textAlignment="center"
+        android:textColor="@color/textColorLightTheme"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+
+    <TextView
+        android:id="@+id/product_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_button"
+        android:text="@string/empty"
+        android:textColor="@color/textColorLightTheme" />
+
 
 </RelativeLayout>
