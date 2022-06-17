@@ -18,26 +18,42 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Objects;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView logo;
+    private DatabaseReference  fdb = FirebaseDatabase.getInstance().getReference();
     private EditText input_product;
     private Button add_button;
     private TextView product_list;
     private TextView recipes;
     private DBHelper dbHelper;
     private HashSet setProduct = new HashSet();
+    private HashMap<String,String> testdb = new HashMap<>();
     private Button clear_button;
     private HashMap<String, String> foodRecipesMap = new HashMap<>();
     private int ii = 0;
     private HashMap<String,String> ii_map = new HashMap<>();
+    private String RECIPES_KEY = "Recipes";
+
+
+    public void getDataDb(){
+
+    }
 
 
     @Override
@@ -45,7 +61,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SAXParserFactory factory = SAXParserFactory.newInstance();
+        fdb.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren())
+                {
+                    //System.out.println("ds  "+ds);
+//String stringBuilder = ds.getValue().toString();
+                    foodRecipesMap.put(ds.getKey(), Objects.requireNonNull(ds.getValue()).toString().replaceAll("\\\\","").replaceAll("n","\\\\n"));
+
+                  System.out.println("string b  "+ds);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+        }
+
+        );
+
+
+
+
+
+        /*SAXParserFactory factory = SAXParserFactory.newInstance();
         try {
             SAXParser parser = factory.newSAXParser();
             RecipesData handler = new RecipesData();
@@ -58,13 +101,13 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
         input_product = findViewById(R.id.input_product);
         add_button = findViewById(R.id.add_button);
         product_list = findViewById(R.id.product_list);
         recipes = findViewById(R.id.recipes);
-        dbHelper = new DBHelper(this);
+       // dbHelper = new DBHelper(this);
         clear_button = findViewById(R.id.clear_button);
         HashSet values = new HashSet();
 
@@ -303,7 +346,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        dbHelper.close();
+       // dbHelper.close();
 
 
         clear_button.setOnClickListener(new View.OnClickListener() {
