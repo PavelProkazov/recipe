@@ -43,17 +43,13 @@ public class MainActivity extends AppCompatActivity {
     private TextView recipes;
     private DBHelper dbHelper;
     private HashSet setProduct = new HashSet();
-    private HashMap<String,String> testdb = new HashMap<>();
+
     private Button clear_button;
     private HashMap<String, String> foodRecipesMap = new HashMap<>();
-    private int ii = 0;
+
     private HashMap<String,String> ii_map = new HashMap<>();
     private String RECIPES_KEY = "Recipes";
 
-
-    public void getDataDb(){
-
-    }
 
 
     @Override
@@ -66,9 +62,8 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren())
                 {
-                    //System.out.println("ds  "+ds);
-//String stringBuilder = ds.getValue().toString();
-                    foodRecipesMap.put(ds.getKey(), Objects.requireNonNull(ds.getValue()).toString().replaceAll("\\\\","").replaceAll("n","\\\\n"));
+
+                    foodRecipesMap.put(ds.getKey(), Objects.requireNonNull(ds.getValue()).toString().replaceAll("\\\\n","\n").replaceAll("\\\\b","\b").replaceAll("\\+",""));
 
                   System.out.println("string b  "+ds);
                 }
@@ -78,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+                recipes.setText(R.string.no_db);
             }
 
         }
@@ -88,20 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        /*SAXParserFactory factory = SAXParserFactory.newInstance();
-        try {
-            SAXParser parser = factory.newSAXParser();
-            RecipesData handler = new RecipesData();
-            parser.parse((
-                    openFileInput("recipes_food.xml")), handler);
 
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
 
         input_product = findViewById(R.id.input_product);
         add_button = findViewById(R.id.add_button);

@@ -8,5 +8,6 @@
     <string name="wait">Ждем..</string>
     <string name="no_text_input">Введите название продукта</string>
     <string name="no_data">Ни чего не найдено!</string>
+    <string name="no_db">Проверте подключение с интернетом!</string>
     <string name="clear">Очистить</string>
 </resources>
