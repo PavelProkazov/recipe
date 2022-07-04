@@ -1,13 +1,18 @@
 <resources>
     <string name="app_name">Recipes</string>
     <string name="logo">Рецепты</string>
-    <string name="input_product">Введите название продукта</string>
-    <string name="add_button">Добавить продукт</string>
+    <string name="input_product">Введите ингредиент</string>
+    <string name="default_text">В поле поиска вводите продукты, из которых хотите готовить (по одному)\n\n
+Чтобы использовать приложение, как собственную книгу рецептов: вы можете присылать свои любимые рецепты в текстовом формате (название-ингредиенты-приготовление) на почту prorezepty@yandex.ru и мы добавим их.\n\n
+
+</string>
+    <string name="add_button">Добавить</string>
     <string name="empty"></string>
     <string name="max_of_product">Очистите список продуктов и попробуйте еще раз, используйте 8 ингредиентов и меньше</string>
     <string name="wait">Ждем..</string>
     <string name="no_text_input">Введите название продукта</string>
-    <string name="no_data">Ни чего не найдено!</string>
-    <string name="no_db">Проверте подключение с интернетом!</string>
+    <string name="no_data">Извините, пока у нас нет рецептов, включающих эти продукты.\n\n У вас есть возможность проявить творчество и придумать новое блюдо. поделиться со всеми пользователями приложения можно, отправив свой рецепт в нам на почту prorezepty@yandex.ru в текстовом формате.</string>
+    <string name="no_db">Проверте подключение к сети интернет!</string>
     <string name="clear">Очистить</string>
+    <string name="email_advice">У вас есть возможность проявить творчество и придумать новое блюдо.поделиться со всеми пользователями приложения можно, отправив свой рецепт в нам на почту prorezepty@yandex.ru в текстовом формате.</string>
 </resources>

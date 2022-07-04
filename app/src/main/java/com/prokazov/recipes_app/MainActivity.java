@@ -1,5 +1,6 @@
 package com.prokazov.recipes_app;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -123,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
 */
 
         add_button.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
 
@@ -167,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
                             if (key.contains(arr_Product.get(0).toLowerCase()) && key.contains(arr_Product.get(1).toLowerCase())) {
 
                                 values.add(value + "\n\n");
-                                recipes.setText("\nРецепты:\n" + values.toString().trim().replaceAll("^\\[|\\]$", ""));
+                                recipes.setText(R.string.no_data);
                             }else if (values.isEmpty()) {
                                 Log.d("mLog", "No DATA");
 

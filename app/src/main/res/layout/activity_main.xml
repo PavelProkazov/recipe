@@ -43,7 +43,8 @@
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:textColor="@color/textColorLightTheme"
-        android:textColorHint="@color/textColorHintLight" />
+        android:textColorHint="@color/textColorHintLight"
+        android:textSize="18sp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -57,7 +58,7 @@
             android:id="@+id/recipes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/empty"
+            android:text="@string/default_text"
             android:textColor="@color/textColorLightTheme" />
     </ScrollView>
 
