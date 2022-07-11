@@ -1,7 +1,13 @@
 package com.prokazov.recipes_app;
 
 import android.annotation.SuppressLint;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +26,9 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -93,7 +102,9 @@ public class MainActivity extends AppCompatActivity {
         recipes = findViewById(R.id.recipes);
        // dbHelper = new DBHelper(this);
         clear_button = findViewById(R.id.clear_button);
-        HashSet values = new HashSet();
+        Set<SpannableStringBuilder> values = new HashSet();
+        SpannableStringBuilder builder = new SpannableStringBuilder();
+        builder.append("Рецепты\n");
 
 
 
@@ -124,13 +135,26 @@ public class MainActivity extends AppCompatActivity {
 */
 
         add_button.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
+
             @Override
             public void onClick(View v) {
 
 
-                if (input_product.getText().toString().trim().equals(""))
+                if (input_product.getText().toString().trim().equals("")) {
+
                     Toast.makeText(MainActivity.this, R.string.no_text_input, Toast.LENGTH_LONG).show();
+                   /* String tok = "ttt www ooo ccc";
+                    Spannable span = new SpannableString(tok);
+
+                    SpannableStringBuilder builder = new SpannableStringBuilder();
+
+                    String content = tok.replace("ooo", "eee");
+                    span.setSpan(new StyleSpan(Typeface.BOLD), 0, tok.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    builder.append(span);
+                    builder.append(content);
+
+                    recipes.setText(builder);*/
+                }
                 else {
                     setProduct.add(input_product.getText().toString().trim());
 
@@ -148,6 +172,9 @@ public class MainActivity extends AppCompatActivity {
                         String value = entry.getValue();
                         String productsSets = setProduct.toString().toLowerCase();
                         Iterator<String> it_set = setProduct.iterator();
+                        String[] tokens;
+
+
 
 
 
@@ -155,20 +182,45 @@ public class MainActivity extends AppCompatActivity {
                         if (setProduct.size() == 1) {
                             if (key.contains(arr_Product.get(0).toLowerCase())) {
 
-                                values.add(value + "\n\n");
-                                recipes.setText("\nРецепты:\n" + values.toString().trim().replaceAll("^\\[|\\]$", ""));
+                                tokens = value.split("\n");
+                                String tok = tokens[0]+"\n";
+                                Spannable span = new SpannableString(tok);
+
+
+
+                                    String content = value.replaceFirst(tok,"").trim().replaceAll("^\\[|\\]$", "")+"\n\n";
+                                span.setSpan(new StyleSpan(Typeface.BOLD),0,tok.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                                    builder.append(span);
+                                builder.append(content);
+
+
+                                values.add(builder);
+
+
+                                recipes.setText(builder);
                             }else if (values.isEmpty()) {
                                 Log.d("mLog", "No DATA");
 
                                 recipes.setText(R.string.no_data);
 
                             } else {
-                                recipes.setText("\nРецепты:\n" + values.toString().trim().replaceAll("^\\[|\\]$", ""));
+                                recipes.setText(builder);
                         }
                         } else if (setProduct.size() == 2) {
                             if (key.contains(arr_Product.get(0).toLowerCase()) && key.contains(arr_Product.get(1).toLowerCase())) {
 
-                                values.add(value + "\n\n");
+                                tokens = value.split("\n");
+                                String tok = tokens[0]+"\n";
+                                Spannable span = new SpannableString(tok);
+
+
+
+                                String content = value.replaceFirst(tok,"").trim().replaceAll("^\\[|\\]$", "")+"\n\n";
+                                span.setSpan(new StyleSpan(Typeface.BOLD),0,tok.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                                builder.append(span);
+                                builder.append(content);
+
+                                values.add(builder);
                                 recipes.setText(R.string.no_data);
                             }else if (values.isEmpty()) {
                                 Log.d("mLog", "No DATA");
@@ -176,84 +228,152 @@ public class MainActivity extends AppCompatActivity {
                                 recipes.setText(R.string.no_data);
 
                             } else {
-                                recipes.setText("\nРецепты:\n" + values.toString().trim().replaceAll("^\\[|\\]$", ""));
-                            }
+                                recipes.setText(builder);}
                         } else if (setProduct.size() == 3) {
                             if (key.contains((arr_Product.get(0).toLowerCase())) &&( key.contains(arr_Product.get(1).toLowerCase())) && (key.contains(arr_Product.get(2).toLowerCase()))) {
 
-                                values.add(value + "\n\n");
-                                recipes.setText("\nРецепты:\n" + values.toString().trim().replaceAll("^\\[|\\]$", ""));
+                                tokens = value.split("\n");
+                                String tok = tokens[0]+"\n";
+                                Spannable span = new SpannableString(tok);
+
+
+
+                                String content = value.replaceFirst(tok,"").trim().replaceAll("^\\[|\\]$", "")+"\n\n";
+                                span.setSpan(new StyleSpan(Typeface.BOLD),0,tok.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                                builder.append(span);
+                                builder.append(content);
+
+                                values.add(builder);
+                                recipes.setText(builder);
                             }else if (values.isEmpty()) {
                                 Log.d("mLog", "No DATA");
 
                                 recipes.setText(R.string.no_data);
 
                             } else {
-                                recipes.setText("\nРецепты:\n" + values.toString().trim().replaceAll("^\\[|\\]$", ""));
+                                recipes.setText(builder);
                             }
                         } else if (setProduct.size() == 4) {
                             if (key.contains(arr_Product.get(0).toLowerCase()) && key.contains(arr_Product.get(1).toLowerCase()) && key.contains(arr_Product.get(2).toLowerCase()) && key.contains(arr_Product.get(3).toLowerCase())) {
 
-                                values.add(value + "\n\n");
-                                recipes.setText("\nРецепты:\n" + values.toString().trim().replaceAll("^\\[|\\]$", ""));
+                                tokens = value.split("\n");
+                                String tok = tokens[0]+"\n";
+                                Spannable span = new SpannableString(tok);
+
+
+
+                                String content = value.replaceFirst(tok,"").trim().replaceAll("^\\[|\\]$", "")+"\n\n";
+                                span.setSpan(new StyleSpan(Typeface.BOLD),0,tok.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                                builder.append(span);
+                                builder.append(content);
+
+                                values.add(builder);
+                                recipes.setText(builder);
+
                             }else if (values.isEmpty()) {
                                 Log.d("mLog", "No DATA");
 
                                 recipes.setText(R.string.no_data);
 
                             } else {
-                                recipes.setText("\nРецепты:\n" + values.toString().trim().replaceAll("^\\[|\\]$", ""));
+                                recipes.setText(builder);
                             }
                         } else if (setProduct.size() == 5) {
                             if (key.contains(arr_Product.get(0).toLowerCase()) && key.contains(arr_Product.get(1).toLowerCase()) && key.contains(arr_Product.get(2).toLowerCase())&& key.contains(arr_Product.get(3).toLowerCase())&& key.contains(arr_Product.get(4).toLowerCase())) {
 
-                                values.add(value + "\n\n");
-                                recipes.setText("\nРецепты:\n" + values.toString().trim().replaceAll("^\\[|\\]$", ""));
+
+                                tokens = value.split("\n");
+                                String tok = tokens[0]+"\n";
+                                Spannable span = new SpannableString(tok);
+
+
+
+                                String content = value.replaceFirst(tok,"").trim().replaceAll("^\\[|\\]$", "")+"\n\n";
+                                span.setSpan(new StyleSpan(Typeface.BOLD),0,tok.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                                builder.append(span);
+                                builder.append(content);
+
+                                values.add(builder);
+                                recipes.setText(builder);
                             }else if (values.isEmpty()) {
                                 Log.d("mLog", "No DATA");
 
                                 recipes.setText(R.string.no_data);
 
                             } else {
-                                recipes.setText("\nРецепты:\n" + values.toString().trim().replaceAll("^\\[|\\]$", ""));
+                                recipes.setText(builder);
                             }
                         } else if (setProduct.size() == 6) {
                             if (key.contains(arr_Product.get(0).toLowerCase()) && key.contains(arr_Product.get(1).toLowerCase()) && key.contains(arr_Product.get(2).toLowerCase()) && key.contains(arr_Product.get(3).toLowerCase())&& key.contains(arr_Product.get(4).toLowerCase())&& key.contains(arr_Product.get(5).toLowerCase())) {
 
-                                values.add(value + "\n\n");
-                                recipes.setText("\nРецепты:\n" + values.toString().trim().replaceAll("^\\[|\\]$", ""));
+                                tokens = value.split("\n");
+                                String tok = tokens[0]+"\n";
+                                Spannable span = new SpannableString(tok);
+
+
+
+                                String content = value.replaceFirst(tok,"").trim().replaceAll("^\\[|\\]$", "")+"\n\n";
+                                span.setSpan(new StyleSpan(Typeface.BOLD),0,tok.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                                builder.append(span);
+                                builder.append(content);
+
+                                values.add(builder);
+                                recipes.setText(builder);
                             }else if (values.isEmpty()) {
                                 Log.d("mLog", "No DATA");
 
                                 recipes.setText(R.string.no_data);
 
                             } else {
-                                recipes.setText("\nРецепты:\n" + values.toString().trim().replaceAll("^\\[|\\]$", ""));
+                                recipes.setText(builder);
                             }
                         } else if (setProduct.size() == 7) {
                             if (key.contains(arr_Product.get(0).toLowerCase()) && key.contains(arr_Product.get(1).toLowerCase()) && key.contains(arr_Product.get(2).toLowerCase())&& key.contains(arr_Product.get(3).toLowerCase())&& key.contains(arr_Product.get(4).toLowerCase())&& key.contains(arr_Product.get(5).toLowerCase())&& key.contains(arr_Product.get(6).toLowerCase())) {
 
-                                values.add(value + "\n\n");
-                                recipes.setText("\nРецепты:\n" + values.toString().trim().replaceAll("^\\[|\\]$", ""));
+                                tokens = value.split("\n");
+                                String tok = tokens[0]+"\n";
+                                Spannable span = new SpannableString(tok);
+
+
+
+                                String content = value.replaceFirst(tok,"").trim().replaceAll("^\\[|\\]$", "")+"\n\n";
+                                span.setSpan(new StyleSpan(Typeface.BOLD),0,tok.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                                builder.append(span);
+                                builder.append(content);
+
+                                values.add(builder);
+                                recipes.setText(builder);
                             }else if (values.isEmpty()) {
                                 Log.d("mLog", "No DATA");
 
                                 recipes.setText(R.string.no_data);
 
                             } else {
-                                recipes.setText("\nРецепты:\n" + values.toString().trim().replaceAll("^\\[|\\]$", ""));
+                                recipes.setText(builder);
                             }
                         } else if (setProduct.size() == 8) {
                             if (key.contains(arr_Product.get(0).toLowerCase()) && key.contains(arr_Product.get(1).toLowerCase()) && key.contains(arr_Product.get(2).toLowerCase()) && key.contains(arr_Product.get(3).toLowerCase())&& key.contains(arr_Product.get(4).toLowerCase())&& key.contains(arr_Product.get(5).toLowerCase())&& key.contains(arr_Product.get(6).toLowerCase())&& key.contains(arr_Product.get(7).toLowerCase())) {
 
-                                values.add(value + "\n\n");
-                                recipes.setText("\nРецепты:\n" + values.toString().trim().replaceAll("^\\[|\\]$", ""));
+
+                                tokens = value.split("\n");
+                                String tok = tokens[0]+"\n";
+                                Spannable span = new SpannableString(tok);
+
+
+
+                                String content = value.replaceFirst(tok,"").trim().replaceAll("^\\[|\\]$", "")+"\n\n";
+                                span.setSpan(new StyleSpan(Typeface.BOLD),0,tok.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                                builder.append(span);
+                                builder.append(content);
+
+                                values.add(builder);
+                                recipes.setText(builder);
                             }
 
                         } else if (setProduct.size() == 9) {
                             Toast.makeText(MainActivity.this, R.string.max_of_product, Toast.LENGTH_LONG).show();
                             values.clear();
-
+                            builder.clear();
                             recipes.setText(R.string.max_of_product);
                             input_product.setEnabled(false);
                         }
@@ -280,6 +400,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                     values.clear();
+                    builder.clear();
                     input_product.setText("");
 
 
@@ -297,6 +418,7 @@ public class MainActivity extends AppCompatActivity {
                 recipes.setText("");
                 setProduct.clear();
                 values.clear();
+                builder.clear();
 
                 input_product.setEnabled(true);
 
