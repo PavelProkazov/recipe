@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Recipes</string>
+    <string name="app_name">Recipes/Instructions</string>
     <string name="logo">Рецепты</string>
     <string name="input_product">Введите ингредиент</string>
     <string name="default_text">В поле поиска вводите продукты, из которых хотите готовить (по одному)\n\n
